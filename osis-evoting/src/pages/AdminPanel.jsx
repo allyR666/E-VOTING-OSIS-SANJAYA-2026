@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import { useSettings, useCandidates } from '../lib/useElection'
 import VoterManager from '../components/VoterManager'
 import CandidateManager from '../components/CandidateManager'
 import CallQueuePanel from '../components/CallQueuePanel'
 import ElectionControl from '../components/ElectionControl'
+import SchoolSettings from '../components/SchoolSettings'
 
 const TABS = [
   { key: 'panggil', label: 'Panggil & Antrean' },
   { key: 'pemilih', label: 'Data Pemilih' },
   { key: 'kandidat', label: 'Kandidat' },
-  { key: 'kontrol', label: 'Kontrol Pemilihan' }
+  { key: 'kontrol', label: 'Kontrol Pemilihan' },
+  { key: 'sekolah', label: 'Identitas Sekolah' }
 ]
 
 export default function AdminPanel() {
@@ -39,18 +42,21 @@ export default function AdminPanel() {
   if (!session) return <LoginScreen onLoggedIn={() => {}} />
 
   return (
-    <div className="min-h-screen p-6 lg:p-10">
+    <div className="min-h-screen p-6 lg:p-10 bg-gradient-to-br from-fiesta-purple/5 via-fiesta-pink/5 to-fiesta-amber/10">
       <header className="flex flex-wrap items-center justify-between gap-4 mb-8 no-print">
         <div>
-          <p className="text-gold-500 text-sm tracking-wide mb-1">Panel Panitia</p>
-          <h1 className="font-display text-2xl text-parchment">{settings?.election_title}</h1>
+          <p className="text-fiesta-magenta text-sm tracking-wide mb-1">Panel Panitia</p>
+          <h1 className="font-display text-2xl text-ink-900">{settings?.election_title}</h1>
         </div>
-        <button
-          onClick={() => supabase.auth.signOut()}
-          className="text-parchment/50 text-sm hover:text-parchment"
-        >
-          Keluar
-        </button>
+        <div className="flex items-center gap-4">
+          <Link to="/" className="text-ink-900/50 text-sm hover:text-ink-900">⌂ Beranda</Link>
+          <button
+            onClick={() => supabase.auth.signOut()}
+            className="text-ink-900/50 text-sm hover:text-ink-900"
+          >
+            Keluar
+          </button>
+        </div>
       </header>
 
       <nav className="flex gap-2 mb-8 no-print overflow-x-auto">
@@ -59,7 +65,7 @@ export default function AdminPanel() {
             key={t.key}
             onClick={() => setTab(t.key)}
             className={`px-5 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap ${
-              tab === t.key ? 'bg-gold-500 text-ink-950' : 'bg-ink-900 text-parchment/60 border border-ink-600'
+              tab === t.key ? 'bg-fiesta-magenta text-white' : 'bg-white text-ink-900/60 border border-gray-200'
             }`}
           >
             {t.label}
@@ -78,6 +84,9 @@ export default function AdminPanel() {
       )}
       {tab === 'kontrol' && (
         <ElectionControl settings={settings} refresh={refreshSettings} />
+      )}
+      {tab === 'sekolah' && (
+        <SchoolSettings settings={settings} refresh={refreshSettings} />
       )}
     </div>
   )
@@ -99,26 +108,29 @@ function LoginScreen() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6">
-      <form onSubmit={handleLogin} className="w-full max-w-sm rounded-2xl border border-ink-600 bg-ink-900 p-8 space-y-4">
-        <p className="text-gold-500 text-sm tracking-wide">Panel Panitia</p>
-        <h1 className="font-display text-2xl text-parchment mb-4">Masuk untuk mengelola pemilihan</h1>
+    <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-fiesta-purple/10 via-fiesta-pink/10 to-fiesta-amber/10">
+      <form onSubmit={handleLogin} className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-8 space-y-4 shadow-card">
+        <div className="flex items-center justify-between">
+          <p className="text-fiesta-magenta text-sm tracking-wide">Panel Panitia</p>
+          <Link to="/" className="text-ink-900/40 text-xs hover:text-ink-900">⌂ Beranda</Link>
+        </div>
+        <h1 className="font-display text-2xl text-ink-900 mb-4">Masuk untuk mengelola pemilihan</h1>
         <input
           type="email"
           placeholder="Email panitia"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full bg-ink-800 border border-ink-600 rounded-xl px-4 py-3 text-parchment outline-none focus:border-gold-500"
+          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
         />
         <input
           type="password"
           placeholder="Kata sandi"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full bg-ink-800 border border-ink-600 rounded-xl px-4 py-3 text-parchment outline-none focus:border-gold-500"
+          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
         />
         {error && <p className="text-merah-500 text-sm">{error}</p>}
-        <button disabled={busy} className="w-full rounded-xl bg-gold-500 hover:bg-gold-400 text-ink-950 font-semibold py-3">
+        <button disabled={busy} className="w-full rounded-xl bg-fiesta-magenta hover:bg-fiesta-purple text-white font-semibold py-3">
           {busy ? 'Memeriksa…' : 'Masuk'}
         </button>
       </form>

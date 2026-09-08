@@ -19,22 +19,22 @@ export default function CallQueuePanel({ voters, settings, refresh }) {
 
   return (
     <div className="grid md:grid-cols-3 gap-6">
-      <div className="md:col-span-2 rounded-2xl border border-ink-600 bg-ink-900 p-10 flex flex-col items-center justify-center text-center">
-        <p className="text-parchment/50 text-sm mb-3">Nomor Sedang Dipanggil</p>
-        <p className="font-display text-8xl text-gold-400 mb-2">{current || '—'}</p>
+      <div className="md:col-span-2 rounded-2xl border border-gray-200 bg-white p-10 flex flex-col items-center justify-center text-center">
+        <p className="text-ink-900/50 text-sm mb-3">Nomor Sedang Dipanggil</p>
+        <p className="font-display text-8xl text-fiesta-magenta mb-2">{current || '—'}</p>
         {currentVoter && (
-          <p className="text-parchment/70">{currentVoter.nama} · Kelas {currentVoter.kelas}</p>
+          <p className="text-ink-900/70">{currentVoter.nama} · Kelas {currentVoter.kelas}</p>
         )}
         <button
           onClick={callNext}
-          className="mt-8 rounded-2xl bg-gold-500 hover:bg-gold-400 text-ink-950 font-semibold px-10 py-4 text-lg"
+          className="mt-8 rounded-2xl bg-fiesta-magenta hover:bg-fiesta-purple text-white font-semibold px-10 py-4 text-lg"
         >
           Panggil Nomor Berikutnya →
         </button>
       </div>
 
-      <div className="rounded-2xl border border-ink-600 bg-ink-900 p-6">
-        <h3 className="font-display text-lg text-parchment mb-4">Antrean Belum Memilih</h3>
+      <div className="rounded-2xl border border-gray-200 bg-white p-6">
+        <h3 className="font-display text-lg text-ink-900 mb-4">Antrean Belum Memilih</h3>
         <div className="max-h-[340px] overflow-y-auto space-y-2">
           {remaining
             .sort((a, b) => a.no_antrean - b.no_antrean)
@@ -43,14 +43,14 @@ export default function CallQueuePanel({ voters, settings, refresh }) {
                 key={v.id}
                 onClick={() => callNumber(v.no_antrean)}
                 className={`w-full text-left px-4 py-2 rounded-xl text-sm flex justify-between ${
-                  v.no_antrean === current ? 'bg-gold-500/20 text-gold-400' : 'hover:bg-ink-800 text-parchment/70'
+                  v.no_antrean === current ? 'bg-fiesta-magenta/10 text-fiesta-magenta' : 'hover:bg-gray-50 text-ink-900/70'
                 }`}
               >
                 <span>No. {v.no_antrean} — {v.nama}</span>
-                <span className="text-parchment/30">{v.kelas}</span>
+                <span className="text-ink-900/30">{v.kelas}</span>
               </button>
             ))}
-          {!remaining.length && <p className="text-parchment/35 text-sm">Semua pemilih sudah memilih 🎉</p>}
+          {!remaining.length && <p className="text-ink-900/35 text-sm">Semua pemilih sudah memilih 🎉</p>}
         </div>
       </div>
     </div>

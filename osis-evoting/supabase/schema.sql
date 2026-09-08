@@ -14,10 +14,23 @@ create table if not exists election_settings (
   status text not null default 'draft' check (status in ('draft','ongoing','ended')),
   results_visible boolean not null default false,
   current_call_number int, -- nomor antrean yang sedang dipanggil ke kiosk
+  -- Identitas sekolah / penyelenggara, ditampilkan di footer semua halaman publik
+  school_name text default 'Nama Sekolah',
+  organizer_name text default 'OSIS',
+  school_address text default '',
+  school_logo_url text default '',
+  osis_logo_url text default '',
   updated_at timestamptz not null default now(),
   constraint single_row check (id = 1)
 );
 insert into election_settings (id) values (1) on conflict (id) do nothing;
+
+-- Migrasi aman untuk instalasi lama (kolom identitas sekolah ditambahkan belakangan)
+alter table election_settings add column if not exists school_name text default 'Nama Sekolah';
+alter table election_settings add column if not exists organizer_name text default 'OSIS';
+alter table election_settings add column if not exists school_address text default '';
+alter table election_settings add column if not exists school_logo_url text default '';
+alter table election_settings add column if not exists osis_logo_url text default '';
 
 -- ---------- 2. Kandidat (Paslon) ----------
 create table if not exists candidates (
@@ -118,14 +131,26 @@ alter table votes enable row level security;
 alter table admins enable row level security;
 
 -- Baca publik (untuk dashboard live & kiosk menampilkan kandidat)
+drop policy if exists "public read settings" on election_settings;
 create policy "public read settings" on election_settings for select using (true);
+
+drop policy if exists "public read candidates" on candidates;
 create policy "public read candidates" on candidates for select using (true);
+
+drop policy if exists "public read voters status" on voters;
 create policy "public read voters status" on voters for select using (true);
 
 -- Tulis hanya untuk admin terdaftar
+drop policy if exists "admin write settings" on election_settings;
 create policy "admin write settings" on election_settings for update using (is_admin());
+
+drop policy if exists "admin write candidates" on candidates;
 create policy "admin write candidates" on candidates for all using (is_admin()) with check (is_admin());
+
+drop policy if exists "admin write voters" on voters;
 create policy "admin write voters" on voters for all using (is_admin()) with check (is_admin());
+
+drop policy if exists "admin read own row" on admins;
 create policy "admin read own row" on admins for select using (auth.uid() = user_id);
 
 -- Catatan: tabel votes TIDAK punya policy insert untuk klien mana pun.
@@ -149,6 +174,28 @@ group by c.id
 order by c.no_urut;
 
 -- ---------- Realtime ----------
-alter publication supabase_realtime add table voters;
-alter publication supabase_realtime add table votes;
-alter publication supabase_realtime add table election_settings;
+-- Dibungkus pengecekan supaya aman dijalankan berkali-kali (tidak error jika tabel
+-- sudah pernah ditambahkan ke publication sebelumnya).
+do $$
+begin
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime' and tablename = 'voters'
+  ) then
+    alter publication supabase_realtime add table voters;
+  end if;
+
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime' and tablename = 'votes'
+  ) then
+    alter publication supabase_realtime add table votes;
+  end if;
+
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime' and tablename = 'election_settings'
+  ) then
+    alter publication supabase_realtime add table election_settings;
+  end if;
+end $$;

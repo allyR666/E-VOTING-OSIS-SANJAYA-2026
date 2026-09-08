@@ -26,6 +26,7 @@ npm run dev
    insert into admins (user_id, nama) values ('uuid-user-tadi', 'Nama Panitia');
    ```
 5. Buka **Project Settings > API** → salin `Project URL` dan `anon public key` ke file `.env`.
+6. (Baru) Di Panel Admin, buka tab **Identitas Sekolah** untuk mengisi nama sekolah, nama penyelenggara (mis. "OSIS SMK Negeri 1 Mataram"), alamat, serta tautan logo sekolah & logo OSIS — otomatis tampil di footer Beranda, Bilik Suara, dan Layar Pemantauan.
 
 Catatan keamanan: tabel `votes` **tidak punya izin insert langsung** dari klien mana pun — satu-satunya jalan masuk suara adalah fungsi `cast_vote()` (SQL `security definer`), jadi siswa di kiosk tidak bisa memanipulasi data suara meski membuka DevTools sekalipun.
 

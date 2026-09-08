@@ -24,6 +24,16 @@ export default {
         sage: {
           400: '#6FAE85',
           500: '#3E8E5A'
+        },
+        fiesta: {
+          purple: '#7C3AED',
+          magenta: '#DB2777',
+          pink: '#F472B6',
+          orange: '#F97316',
+          amber: '#FBBF24',
+          teal: '#14B8A6',
+          sky: '#38BDF8',
+          lime: '#A3E635'
         }
       },
       fontFamily: {
@@ -31,10 +41,11 @@ export default {
         sans: ['"Manrope"', 'ui-sans-serif', 'system-ui', 'sans-serif']
       },
       boxShadow: {
-        seal: '0 0 0 3px rgba(212,162,76,0.25), 0 20px 45px -20px rgba(0,0,0,0.6)'
+        seal: '0 0 0 3px rgba(212,162,76,0.25), 0 16px 34px -18px rgba(76,29,149,0.55)',
+        card: '0 20px 45px -20px rgba(76,29,149,0.35)'
       },
       backgroundImage: {
-        grain: "radial-gradient(circle at 1px 1px, rgba(244,239,228,0.06) 1px, transparent 0)"
+        fiesta: 'linear-gradient(135deg, #7C3AED 0%, #DB2777 32%, #F97316 65%, #FBBF24 100%)'
       }
     }
   },

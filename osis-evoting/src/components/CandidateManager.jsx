@@ -25,66 +25,66 @@ export default function CandidateManager({ candidates, refresh }) {
 
   return (
     <div className="space-y-8">
-      <form onSubmit={addCandidate} className="rounded-2xl border border-ink-600 bg-ink-900 p-6 grid md:grid-cols-2 gap-4">
-        <h3 className="font-display text-lg text-parchment md:col-span-2">Tambah Pasangan Calon</h3>
+      <form onSubmit={addCandidate} className="rounded-2xl border border-gray-200 bg-white p-6 grid md:grid-cols-2 gap-4">
+        <h3 className="font-display text-lg text-ink-900 md:col-span-2">Tambah Pasangan Calon</h3>
         <input
           placeholder="Nomor urut"
           type="number"
           value={form.no_urut}
           onChange={(e) => setForm({ ...form, no_urut: e.target.value })}
-          className="bg-ink-800 border border-ink-600 rounded-xl px-4 py-3 text-parchment outline-none focus:border-gold-500"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
         />
         <div />
         <input
           placeholder="Nama calon ketua"
           value={form.nama_ketua}
           onChange={(e) => setForm({ ...form, nama_ketua: e.target.value })}
-          className="bg-ink-800 border border-ink-600 rounded-xl px-4 py-3 text-parchment outline-none focus:border-gold-500"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
         />
         <input
           placeholder="Nama calon wakil ketua"
           value={form.nama_wakil}
           onChange={(e) => setForm({ ...form, nama_wakil: e.target.value })}
-          className="bg-ink-800 border border-ink-600 rounded-xl px-4 py-3 text-parchment outline-none focus:border-gold-500"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
         />
         <input
           placeholder="URL foto ketua (opsional)"
           value={form.foto_url}
           onChange={(e) => setForm({ ...form, foto_url: e.target.value })}
-          className="bg-ink-800 border border-ink-600 rounded-xl px-4 py-3 text-parchment outline-none focus:border-gold-500"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
         />
         <input
           placeholder="URL foto wakil (opsional)"
           value={form.foto_url_wakil}
           onChange={(e) => setForm({ ...form, foto_url_wakil: e.target.value })}
-          className="bg-ink-800 border border-ink-600 rounded-xl px-4 py-3 text-parchment outline-none focus:border-gold-500"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
         />
         <textarea
           placeholder="Visi (opsional)"
           value={form.visi}
           onChange={(e) => setForm({ ...form, visi: e.target.value })}
           rows={3}
-          className="bg-ink-800 border border-ink-600 rounded-xl px-4 py-3 text-parchment outline-none focus:border-gold-500 md:col-span-2"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta md:col-span-2"
         />
         <textarea
           placeholder="Misi (opsional)"
           value={form.misi}
           onChange={(e) => setForm({ ...form, misi: e.target.value })}
           rows={3}
-          className="bg-ink-800 border border-ink-600 rounded-xl px-4 py-3 text-parchment outline-none focus:border-gold-500 md:col-span-2"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta md:col-span-2"
         />
-        <button disabled={busy} className="md:col-span-2 rounded-xl bg-gold-500 hover:bg-gold-400 text-ink-950 font-semibold px-5 py-3">
+        <button disabled={busy} className="md:col-span-2 rounded-xl bg-fiesta-magenta hover:bg-fiesta-purple text-white font-semibold px-5 py-3">
           Simpan Paslon
         </button>
       </form>
 
       <div className="grid md:grid-cols-2 gap-5">
         {candidates.map((c) => (
-          <div key={c.id} className="rounded-2xl border border-ink-600 bg-ink-900 p-5 flex items-start gap-4">
+          <div key={c.id} className="rounded-2xl border border-gray-200 bg-white p-5 flex items-start gap-4">
             <span className="seal-number w-12 h-12 text-lg shrink-0">{c.no_urut}</span>
             <div className="flex-1">
-              <p className="font-display text-lg text-parchment">{c.nama_ketua} &amp; {c.nama_wakil}</p>
-              {c.visi && <p className="text-parchment/45 text-sm mt-1 line-clamp-2">{c.visi}</p>}
+              <p className="font-display text-lg text-ink-900">{c.nama_ketua} &amp; {c.nama_wakil}</p>
+              {c.visi && <p className="text-ink-900/45 text-sm mt-1 line-clamp-2">{c.visi}</p>}
             </div>
             <button onClick={() => removeCandidate(c.id)} className="text-merah-500 text-sm">Hapus</button>
           </div>

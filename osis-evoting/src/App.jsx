@@ -39,10 +39,10 @@ export default function App() {
           Pemilihan Resmi {settings?.organizer_name || 'OSIS'}
         </p>
         <h1 className="font-display font-extrabold text-4xl md:text-6xl leading-tight text-white drop-shadow-lg">
-          Satu suara, satu masa depan organisasi
+          Satu suara, satu masa depan SMKS Sanjaya
         </h1>
         <p className="mt-5 text-white/85 max-w-xl mx-auto drop-shadow">
-          Sistem pemilihan ketua dan wakil ketua OSIS secara digital, jujur, dan transparan —
+          Sistem pemilihan ketua dan wakil ketua OSIS SMKS Sanjaya Bajawa-Flores secara digital, jujur, dan transparan —
           dipantau langsung dari layar ini hingga hasil akhir diumumkan.
         </p>
       </div>

@@ -25,15 +25,18 @@ export default {
           400: '#6FAE85',
           500: '#3E8E5A'
         },
-        fiesta: {
-          purple: '#7C3AED',
-          magenta: '#DB2777',
-          pink: '#F472B6',
-          orange: '#F97316',
-          amber: '#FBBF24',
-          teal: '#14B8A6',
-          sky: '#38BDF8',
-          lime: '#A3E635'
+        // Palet biru elegan / profesional — latar & aksen utama
+        azure: {
+          50: '#EFF6FF',
+          100: '#DCEBFF',
+          200: '#B7D8FF',
+          300: '#89BEFF',
+          400: '#569DFF',
+          500: '#2E7DF5',
+          600: '#1D5FDB',
+          700: '#1848A8',
+          800: '#123A85',
+          900: '#0E2C63'
         }
       },
       fontFamily: {
@@ -41,11 +44,11 @@ export default {
         sans: ['"Manrope"', 'ui-sans-serif', 'system-ui', 'sans-serif']
       },
       boxShadow: {
-        seal: '0 0 0 3px rgba(212,162,76,0.25), 0 16px 34px -18px rgba(76,29,149,0.55)',
-        card: '0 20px 45px -20px rgba(76,29,149,0.35)'
+        seal: '0 0 0 3px rgba(212,162,76,0.25), 0 16px 34px -18px rgba(14,44,99,0.45)',
+        card: '0 20px 45px -20px rgba(14,44,99,0.28)'
       },
       backgroundImage: {
-        fiesta: 'linear-gradient(135deg, #7C3AED 0%, #DB2777 32%, #F97316 65%, #FBBF24 100%)'
+        elegant: 'linear-gradient(120deg, #EAF3FF 0%, #DCEBFF 30%, #C6DEFF 60%, #E9F2FF 100%)'
       }
     }
   },

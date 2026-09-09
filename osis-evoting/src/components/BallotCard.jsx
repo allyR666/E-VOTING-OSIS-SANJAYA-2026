@@ -1,8 +1,8 @@
 const ACCENTS = [
-  'group-hover:border-fiesta-magenta',
-  'group-hover:border-fiesta-teal',
-  'group-hover:border-fiesta-orange',
-  'group-hover:border-fiesta-purple'
+  'group-hover:border-azure-700',
+  'group-hover:border-azure-500',
+  'group-hover:border-gold-600',
+  'group-hover:border-azure-800'
 ]
 
 export default function BallotCard({ candidate, selected, onSelect, big, index = 0 }) {
@@ -13,7 +13,7 @@ export default function BallotCard({ candidate, selected, onSelect, big, index =
       className={`group relative flex flex-col items-center rounded-3xl border-4 px-6 py-8 transition-all duration-200 bg-white shadow-card
         ${big ? 'min-h-[420px]' : 'min-h-[320px]'}
         ${selected
-          ? 'border-fiesta-magenta scale-[1.02]'
+          ? 'border-azure-700 scale-[1.02]'
           : `border-transparent ${accent} active:scale-[0.98]`}`}
     >
       <span className="seal-number w-16 h-16 text-2xl mb-5">{candidate.no_urut}</span>
@@ -32,7 +32,7 @@ export default function BallotCard({ candidate, selected, onSelect, big, index =
       </h3>
 
       {selected && (
-        <span className="absolute top-4 right-4 rounded-full bg-fiesta-magenta text-white text-xs font-semibold px-3 py-1">
+        <span className="absolute top-4 right-4 rounded-full bg-azure-700 text-white text-xs font-semibold px-3 py-1">
           Dipilih ✓
         </span>
       )}
@@ -43,7 +43,7 @@ export default function BallotCard({ candidate, selected, onSelect, big, index =
 function Photo({ url, label }) {
   return (
     <div className="flex flex-col items-center gap-1">
-      <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-fiesta-amber/40 bg-amber-50 flex items-center justify-center">
+      <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-gold-400/40 bg-amber-50 flex items-center justify-center">
         {url ? (
           <img src={url} alt={label} className="w-full h-full object-cover" />
         ) : (

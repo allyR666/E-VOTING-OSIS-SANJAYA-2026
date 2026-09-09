@@ -1,5 +1,5 @@
 import { useSettings, useSummary, useResults } from '../lib/useElection'
-import PartyBackground from '../components/PartyBackground'
+import ElegantBackground from '../components/ElegantBackground'
 import SiteFooter from '../components/SiteFooter'
 import TopNav from '../components/TopNav'
 
@@ -17,7 +17,7 @@ export default function LiveDashboard() {
 
   return (
     <div className="min-h-screen p-8 lg:p-14 relative">
-      <PartyBackground />
+      <ElegantBackground />
 
       <TopNav variant="light" />
 
@@ -31,9 +31,9 @@ export default function LiveDashboard() {
           )}
           <div>
             <p className="text-white/85 text-sm tracking-wide mb-1 drop-shadow">
-              🎉 {settings?.school_year || ''} · Layar Pemantauan Langsung
+              {settings?.school_year || ''} · Layar Pemantauan Langsung
             </p>
-            <h1 className="font-display text-3xl lg:text-4xl text-white drop-shadow-lg">
+            <h1 className="font-display text-3xl lg:text-4xl font-extrabold text-white drop-shadow-lg">
               {settings?.election_title || 'Pemilihan Ketua & Wakil Ketua OSIS'}
             </h1>
           </div>
@@ -43,20 +43,20 @@ export default function LiveDashboard() {
 
       {/* Statistik partisipasi */}
       <section className="grid md:grid-cols-3 gap-6 mb-14">
-        <StatCard label="Total Pemilih Terdaftar" value={summary.total_pemilih} accent="text-fiesta-purple" ring="border-fiesta-purple/30" />
-        <StatCard label="Sudah Memilih" value={summary.sudah_memilih} accent="text-fiesta-teal" ring="border-fiesta-teal/30" />
-        <StatCard label="Belum Memilih" value={summary.belum_memilih} accent="text-fiesta-magenta" ring="border-fiesta-magenta/30" />
+        <StatCard label="Total Pemilih Terdaftar" value={summary.total_pemilih} accent="text-azure-800" ring="border-azure-800/30" />
+        <StatCard label="Sudah Memilih" value={summary.sudah_memilih} accent="text-azure-500" ring="border-azure-500/30" />
+        <StatCard label="Belum Memilih" value={summary.belum_memilih} accent="text-azure-700" ring="border-azure-700/30" />
       </section>
 
       {/* Progress partisipasi */}
       <section className="mb-16 bg-white/95 rounded-3xl shadow-card p-8">
         <div className="flex items-baseline justify-between mb-3">
           <p className="text-ink-900/60 text-sm">Tingkat Partisipasi</p>
-          <p className="font-display text-2xl text-fiesta-orange">{pct}%</p>
+          <p className="font-display text-2xl text-gold-600">{pct}%</p>
         </div>
         <div className="h-5 rounded-full bg-amber-50 overflow-hidden">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-fiesta-magenta via-fiesta-orange to-fiesta-amber animate-fillbar"
+            className="h-full rounded-full bg-gradient-to-r from-azure-700 via-gold-600 to-gold-400 animate-fillbar"
             style={{ width: `${pct}%` }}
           />
         </div>
@@ -71,7 +71,7 @@ export default function LiveDashboard() {
         <div className="space-y-5">
           {results.map((r, i) => {
             const rpct = totalSuara ? Math.round((r.jumlah_suara / totalSuara) * 100) : 0
-            const bars = ['from-fiesta-magenta to-fiesta-pink', 'from-fiesta-teal to-fiesta-sky', 'from-fiesta-orange to-fiesta-amber', 'from-fiesta-purple to-fiesta-magenta']
+            const bars = ['from-azure-700 to-azure-200', 'from-azure-500 to-azure-300', 'from-gold-600 to-gold-400', 'from-azure-800 to-azure-700']
             return (
               <div key={r.id} className="rounded-2xl bg-white/95 shadow-card p-6">
                 <div className="flex items-center gap-4 mb-4">
@@ -82,7 +82,7 @@ export default function LiveDashboard() {
                     </p>
                   </div>
                   {showResults && (
-                    <p className="font-display text-2xl text-fiesta-orange">{rpct}%</p>
+                    <p className="font-display text-2xl text-gold-600">{rpct}%</p>
                   )}
                 </div>
                 {showResults ? (
@@ -94,7 +94,7 @@ export default function LiveDashboard() {
                   </div>
                 ) : (
                   <div className="h-3 rounded-full bg-amber-50 overflow-hidden">
-                    <div className="h-full w-full opacity-30 bg-[repeating-linear-gradient(45deg,rgba(124,58,237,0.25)_0px,rgba(124,58,237,0.25)_10px,transparent_10px,transparent_20px)]" />
+                    <div className="h-full w-full opacity-25 bg-[repeating-linear-gradient(45deg,rgba(37,99,214,0.28)_0px,rgba(37,99,214,0.28)_10px,transparent_10px,transparent_20px)]" />
                   </div>
                 )}
               </div>
@@ -120,8 +120,8 @@ function StatCard({ label, value, accent, ring }) {
 function StatusBadge({ status }) {
   const map = {
     draft: { label: 'Belum Dimulai', cls: 'bg-white/25 text-white border-white/40' },
-    ongoing: { label: '● Sedang Berlangsung', cls: 'bg-fiesta-teal text-white border-fiesta-teal' },
-    ended: { label: 'Telah Ditutup', cls: 'bg-fiesta-magenta text-white border-fiesta-magenta' }
+    ongoing: { label: '● Sedang Berlangsung', cls: 'bg-azure-500 text-white border-azure-500' },
+    ended: { label: 'Telah Ditutup', cls: 'bg-azure-700 text-white border-azure-700' }
   }
   const s = map[status] || map.draft
   return (

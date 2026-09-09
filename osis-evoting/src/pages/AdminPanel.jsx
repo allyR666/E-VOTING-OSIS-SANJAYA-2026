@@ -42,10 +42,10 @@ export default function AdminPanel() {
   if (!session) return <LoginScreen onLoggedIn={() => {}} />
 
   return (
-    <div className="min-h-screen p-6 lg:p-10 bg-gradient-to-br from-fiesta-purple/5 via-fiesta-pink/5 to-fiesta-amber/10">
+    <div className="min-h-screen p-6 lg:p-10 bg-gradient-to-br from-azure-800/5 via-azure-200/5 to-gold-400/10">
       <header className="flex flex-wrap items-center justify-between gap-4 mb-8 no-print">
         <div>
-          <p className="text-fiesta-magenta text-sm tracking-wide mb-1">Panel Panitia</p>
+          <p className="text-azure-700 text-sm tracking-wide mb-1">Panel Panitia</p>
           <h1 className="font-display text-2xl text-ink-900">{settings?.election_title}</h1>
         </div>
         <div className="flex items-center gap-4">
@@ -65,7 +65,7 @@ export default function AdminPanel() {
             key={t.key}
             onClick={() => setTab(t.key)}
             className={`px-5 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap ${
-              tab === t.key ? 'bg-fiesta-magenta text-white' : 'bg-white text-ink-900/60 border border-gray-200'
+              tab === t.key ? 'bg-azure-700 text-white' : 'bg-white text-ink-900/60 border border-gray-200'
             }`}
           >
             {t.label}
@@ -108,10 +108,10 @@ function LoginScreen() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-fiesta-purple/10 via-fiesta-pink/10 to-fiesta-amber/10">
+    <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-azure-800/10 via-azure-200/10 to-gold-400/10">
       <form onSubmit={handleLogin} className="w-full max-w-sm rounded-2xl border border-gray-200 bg-white p-8 space-y-4 shadow-card">
         <div className="flex items-center justify-between">
-          <p className="text-fiesta-magenta text-sm tracking-wide">Panel Panitia</p>
+          <p className="text-azure-700 text-sm tracking-wide">Panel Panitia</p>
           <Link to="/" className="text-ink-900/40 text-xs hover:text-ink-900">⌂ Beranda</Link>
         </div>
         <h1 className="font-display text-2xl text-ink-900 mb-4">Masuk untuk mengelola pemilihan</h1>
@@ -120,17 +120,17 @@ function LoginScreen() {
           placeholder="Email panitia"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
         />
         <input
           type="password"
           placeholder="Kata sandi"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
         />
         {error && <p className="text-merah-500 text-sm">{error}</p>}
-        <button disabled={busy} className="w-full rounded-xl bg-fiesta-magenta hover:bg-fiesta-purple text-white font-semibold py-3">
+        <button disabled={busy} className="w-full rounded-xl bg-azure-700 hover:bg-azure-800 text-white font-semibold py-3">
           {busy ? 'Memeriksa…' : 'Masuk'}
         </button>
       </form>

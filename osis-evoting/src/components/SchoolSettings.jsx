@@ -47,7 +47,7 @@ export default function SchoolSettings({ settings, refresh }) {
             value={form.school_name}
             onChange={(e) => setForm({ ...form, school_name: e.target.value })}
             placeholder="Contoh: SMK Negeri 1 Mataram"
-            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
           />
         </Field>
 
@@ -56,7 +56,7 @@ export default function SchoolSettings({ settings, refresh }) {
             value={form.organizer_name}
             onChange={(e) => setForm({ ...form, organizer_name: e.target.value })}
             placeholder="Contoh: OSIS SMK Negeri 1 Mataram"
-            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
           />
         </Field>
 
@@ -65,7 +65,7 @@ export default function SchoolSettings({ settings, refresh }) {
             value={form.school_address}
             onChange={(e) => setForm({ ...form, school_address: e.target.value })}
             placeholder="Jl. Contoh No. 1, Mataram, NTB"
-            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
           />
         </Field>
 
@@ -74,7 +74,7 @@ export default function SchoolSettings({ settings, refresh }) {
             value={form.school_logo_url}
             onChange={(e) => setForm({ ...form, school_logo_url: e.target.value })}
             placeholder="https://…/logo-sekolah.png"
-            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
           />
         </Field>
 
@@ -83,18 +83,18 @@ export default function SchoolSettings({ settings, refresh }) {
             value={form.osis_logo_url}
             onChange={(e) => setForm({ ...form, osis_logo_url: e.target.value })}
             placeholder="https://…/logo-osis.png"
-            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
           />
         </Field>
 
-        <button disabled={busy} className="w-full rounded-xl bg-fiesta-magenta hover:bg-fiesta-purple text-white font-semibold py-3">
+        <button disabled={busy} className="w-full rounded-xl bg-azure-700 hover:bg-azure-800 text-white font-semibold py-3">
           {busy ? 'Menyimpan…' : saved ? 'Tersimpan ✓' : 'Simpan Pengaturan'}
         </button>
       </form>
 
       <div className="rounded-2xl border border-gray-200 bg-white p-6">
         <h3 className="font-display text-lg text-ink-900 mb-4">Pratinjau Footer</h3>
-        <div className="rounded-2xl bg-gradient-to-br from-fiesta-purple via-fiesta-magenta to-fiesta-orange p-6">
+        <div className="rounded-2xl bg-gradient-to-br from-azure-800 via-azure-700 to-gold-600 p-6">
           <div className="flex flex-wrap items-center gap-4 justify-center bg-white/10 rounded-xl p-5 backdrop-blur">
             {form.school_logo_url && (
               <img src={form.school_logo_url} alt="Logo Sekolah" className="w-12 h-12 object-contain rounded-lg bg-white/90 p-1" />

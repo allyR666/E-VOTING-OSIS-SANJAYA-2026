@@ -89,23 +89,23 @@ export default function VoterManager({ voters, refresh, settings }) {
             placeholder="Nama lengkap"
             value={form.nama}
             onChange={(e) => setForm({ ...form, nama: e.target.value })}
-            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
           />
           <div className="flex gap-3">
             <input
               placeholder="Kelas (mis. XI IPA 2)"
               value={form.kelas}
               onChange={(e) => setForm({ ...form, kelas: e.target.value })}
-              className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+              className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
             />
             <input
               placeholder="NIS (opsional)"
               value={form.nis}
               onChange={(e) => setForm({ ...form, nis: e.target.value })}
-              className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+              className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
             />
           </div>
-          <button disabled={busy} className="rounded-xl bg-fiesta-magenta hover:bg-fiesta-purple text-white font-semibold px-5 py-3 w-full">
+          <button disabled={busy} className="rounded-xl bg-azure-700 hover:bg-azure-800 text-white font-semibold px-5 py-3 w-full">
             Tambah nomor antrean #{nextNo}
           </button>
         </form>
@@ -118,12 +118,12 @@ export default function VoterManager({ voters, refresh, settings }) {
             onChange={(e) => setCsvText(e.target.value)}
             rows={5}
             placeholder={'Ahmad Fauzi,XI IPA 1,10231\nSiti Nur,XI IPA 1,10232'}
-            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta font-mono text-sm"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700 font-mono text-sm"
           />
           <button
             onClick={importCsv}
             disabled={busy || !csvText.trim()}
-            className="mt-3 rounded-xl border-2 border-fiesta-magenta text-fiesta-magenta font-semibold px-5 py-3 w-full disabled:opacity-40"
+            className="mt-3 rounded-xl border-2 border-azure-700 text-azure-700 font-semibold px-5 py-3 w-full disabled:opacity-40"
           >
             Impor Daftar
           </button>
@@ -140,12 +140,12 @@ export default function VoterManager({ voters, refresh, settings }) {
               placeholder="Cari nama / kelas / nomor…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-ink-900 outline-none focus:border-fiesta-magenta"
+              className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-ink-900 outline-none focus:border-azure-700"
             />
             <button
               onClick={printSelected}
               disabled={!selectedToPrint.length}
-              className="rounded-xl bg-fiesta-magenta hover:bg-fiesta-purple text-white text-sm font-semibold px-4 py-2 disabled:opacity-30"
+              className="rounded-xl bg-azure-700 hover:bg-azure-800 text-white text-sm font-semibold px-4 py-2 disabled:opacity-30"
             >
               Cetak Kartu ({selectedToPrint.length})
             </button>

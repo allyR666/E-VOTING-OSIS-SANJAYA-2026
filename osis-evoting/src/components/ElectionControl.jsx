@@ -29,7 +29,7 @@ export default function ElectionControl({ settings, refresh }) {
               onClick={() => setStatus(s.key)}
               className={`flex-1 rounded-xl border-2 px-4 py-4 text-sm font-semibold transition-colors ${
                 settings?.status === s.key
-                  ? 'border-fiesta-magenta bg-fiesta-magenta/10 text-fiesta-magenta'
+                  ? 'border-azure-700 bg-azure-700/10 text-azure-700'
                   : 'border-gray-200 text-ink-900/50 hover:border-gray-300'
               }`}
             >
@@ -46,7 +46,7 @@ export default function ElectionControl({ settings, refresh }) {
         </div>
         <button
           onClick={toggleResults}
-          className={`relative w-14 h-8 rounded-full transition-colors ${settings?.results_visible ? 'bg-fiesta-magenta' : 'bg-gray-300'}`}
+          className={`relative w-14 h-8 rounded-full transition-colors ${settings?.results_visible ? 'bg-azure-700' : 'bg-gray-300'}`}
         >
           <span
             className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow transition-transform ${

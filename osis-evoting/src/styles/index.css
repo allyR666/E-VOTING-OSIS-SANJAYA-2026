@@ -7,9 +7,16 @@ html, body, #root { height: 100%; }
 body {
   @apply text-ink-900 font-sans antialiased;
   background: #fff;
+  font-weight: 500;
 }
 
-::selection { background: rgba(219,39,119,0.25); }
+/* Tulisan judul selalu tebal & berwibawa */
+.font-display {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+::selection { background: rgba(29,95,219,0.25); }
 
 .seal-number {
   @apply flex items-center justify-center rounded-full border-2 border-gold-500 text-gold-600 font-display bg-white;
@@ -28,12 +35,22 @@ body {
   animation: fillbar 1.1s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
-@keyframes floaty {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-22px) rotate(12deg); }
+/* Gradasi latar bergeser sangat halus — kesan elegan, bukan mencolok */
+@keyframes gradientshift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
-.animate-float {
-  animation: floaty 5s ease-in-out infinite;
+.animate-gradient-shift {
+  animation: gradientshift 18s ease-in-out infinite;
+}
+
+/* Cahaya mengambang lambat untuk latar */
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(18px, -26px) scale(1.06); }
+}
+.animate-drift {
+  animation: drift 12s ease-in-out infinite;
 }
 
 @keyframes popin {
@@ -42,4 +59,13 @@ body {
 }
 .animate-popin {
   animation: popin 0.35s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.55s cubic-bezier(.2,.8,.2,1) forwards;
+  opacity: 0;
 }

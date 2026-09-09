@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import { useCandidates, useSettings } from '../lib/useElection'
 import BallotCard from '../components/BallotCard'
-import PartyBackground from '../components/PartyBackground'
+import ElegantBackground from '../components/ElegantBackground'
 import SiteFooter from '../components/SiteFooter'
 
 const STEPS = { SCAN: 'scan', CHOOSE: 'choose', CONFIRM: 'confirm', DONE: 'done', ERROR: 'error' }
@@ -70,7 +70,7 @@ export default function VotingKiosk() {
         <TopBar settings={settings} showKioskLink={false} />
         <div className="flex-1 flex items-center justify-center text-center">
           <div className="bg-white/95 rounded-3xl shadow-card px-10 py-12 max-w-md">
-            <p className="text-fiesta-magenta font-semibold text-sm mb-3 tracking-wide">Bilik Suara</p>
+            <p className="text-azure-700 font-semibold text-sm mb-3 tracking-wide">Bilik Suara</p>
             <h1 className="font-display text-4xl text-ink-900 mb-4">
               {settings.status === 'draft' ? 'Pemilihan belum dibuka' : 'Pemilihan telah ditutup'}
             </h1>
@@ -89,7 +89,7 @@ export default function VotingKiosk() {
       <div className="flex-1 flex items-center justify-center">
         {step === STEPS.SCAN && (
           <div className="w-full max-w-md text-center bg-white/95 rounded-3xl shadow-card px-8 py-10 animate-popin">
-            <p className="text-fiesta-magenta font-semibold text-sm mb-3 tracking-wide">🎉 Bilik Suara</p>
+            <p className="text-azure-700 font-bold text-sm mb-3 tracking-wide">Bilik Suara</p>
             <h1 className="font-display text-3xl text-ink-900 mb-8">Masukkan kode kartu coblos Anda</h1>
             <form onSubmit={handleScanSubmit} className="flex flex-col gap-4">
               <input
@@ -98,11 +98,11 @@ export default function VotingKiosk() {
                 value={kode}
                 onChange={(e) => setKode(e.target.value.toUpperCase())}
                 placeholder="Contoh: OSIS-0042"
-                className="text-center text-2xl tracking-widest bg-amber-50 border-2 border-fiesta-amber/50 focus:border-fiesta-magenta rounded-2xl py-5 px-4 outline-none text-ink-900"
+                className="text-center text-2xl tracking-widest bg-amber-50 border-2 border-gold-400/50 focus:border-azure-700 rounded-2xl py-5 px-4 outline-none text-ink-900"
               />
               <button
                 type="submit"
-                className="rounded-2xl bg-fiesta-magenta hover:bg-fiesta-purple text-white font-semibold text-lg py-5 transition-colors"
+                className="rounded-2xl bg-azure-700 hover:bg-azure-800 text-white font-semibold text-lg py-5 transition-colors"
               >
                 Lanjutkan
               </button>
@@ -114,8 +114,8 @@ export default function VotingKiosk() {
         {step === STEPS.CHOOSE && (
           <div className="w-full max-w-5xl">
             <div className="text-center mb-10">
-              <p className="text-white font-semibold text-sm mb-3 tracking-wide drop-shadow">Pilih satu pasangan calon</p>
-              <h1 className="font-display text-3xl text-white drop-shadow-lg">Ketua & Wakil Ketua OSIS</h1>
+              <p className="text-azure-700 font-bold text-sm mb-3 tracking-wide">Pilih satu pasangan calon</p>
+              <h1 className="font-display text-3xl text-ink-900">Ketua & Wakil Ketua OSIS</h1>
             </div>
             <div className={`grid gap-6 ${candidates.length > 2 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
               {candidates.map((c, i) => (
@@ -127,7 +127,7 @@ export default function VotingKiosk() {
 
         {step === STEPS.CONFIRM && selected && (
           <div className="w-full max-w-md text-center bg-white/95 rounded-3xl shadow-card px-8 py-10 animate-popin">
-            <p className="text-fiesta-magenta font-semibold text-sm mb-3 tracking-wide">Konfirmasi pilihan</p>
+            <p className="text-azure-700 font-semibold text-sm mb-3 tracking-wide">Konfirmasi pilihan</p>
             <h1 className="font-display text-3xl text-ink-900 mb-2">
               Paslon No. {selected.no_urut}
             </h1>
@@ -148,7 +148,7 @@ export default function VotingKiosk() {
               <button
                 onClick={handleConfirm}
                 disabled={submitting}
-                className="flex-1 rounded-2xl bg-fiesta-magenta hover:bg-fiesta-purple text-white font-semibold py-5 text-lg disabled:opacity-60"
+                className="flex-1 rounded-2xl bg-azure-700 hover:bg-azure-800 text-white font-semibold py-5 text-lg disabled:opacity-60"
               >
                 {submitting ? 'Mengirim…' : 'Kirim suara'}
               </button>
@@ -158,13 +158,13 @@ export default function VotingKiosk() {
 
         {step === STEPS.DONE && (
           <div className="text-center bg-white/95 rounded-3xl shadow-card px-10 py-12 animate-popin">
-            <span className="seal-number w-20 h-20 text-3xl mx-auto mb-6 border-fiesta-lime text-fiesta-teal">✓</span>
-            <h1 className="font-display text-3xl text-ink-900 mb-3">🎉 Terima kasih!</h1>
+            <span className="seal-number w-20 h-20 text-3xl mx-auto mb-6 border-gold-400 text-azure-500">✓</span>
+            <h1 className="font-display text-3xl text-ink-900 mb-3">Terima kasih!</h1>
             <p className="text-ink-900/60 mb-6">Suara Anda telah tercatat dengan aman.</p>
             <p className="text-ink-900/35 text-sm mb-4">Kembali ke Bilik Suara otomatis dalam {countdown} detik…</p>
             <button
               onClick={resetKiosk}
-              className="rounded-2xl bg-fiesta-teal hover:bg-fiesta-purple text-white font-semibold px-8 py-3"
+              className="rounded-2xl bg-azure-500 hover:bg-azure-800 text-white font-semibold px-8 py-3"
             >
               Kembali ke Bilik Suara Sekarang
             </button>
@@ -179,7 +179,7 @@ export default function VotingKiosk() {
             <p className="text-ink-900/35 text-sm mb-6">Kembali ke Bilik Suara otomatis dalam {countdown} detik…</p>
             <button
               onClick={resetKiosk}
-              className="rounded-2xl bg-fiesta-magenta hover:bg-fiesta-purple text-white font-semibold px-8 py-3"
+              className="rounded-2xl bg-azure-700 hover:bg-azure-800 text-white font-semibold px-8 py-3"
             >
               Kembali Sekarang
             </button>
@@ -214,7 +214,7 @@ function TopBar({ settings, showKioskLink }) {
 function Screen({ children }) {
   return (
     <div className="min-h-screen flex flex-col p-6 lg:p-10 select-none relative">
-      <PartyBackground />
+      <ElegantBackground />
       {children}
     </div>
   )

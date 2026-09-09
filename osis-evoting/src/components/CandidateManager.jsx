@@ -32,48 +32,48 @@ export default function CandidateManager({ candidates, refresh }) {
           type="number"
           value={form.no_urut}
           onChange={(e) => setForm({ ...form, no_urut: e.target.value })}
-          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
         />
         <div />
         <input
           placeholder="Nama calon ketua"
           value={form.nama_ketua}
           onChange={(e) => setForm({ ...form, nama_ketua: e.target.value })}
-          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
         />
         <input
           placeholder="Nama calon wakil ketua"
           value={form.nama_wakil}
           onChange={(e) => setForm({ ...form, nama_wakil: e.target.value })}
-          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
         />
         <input
           placeholder="URL foto ketua (opsional)"
           value={form.foto_url}
           onChange={(e) => setForm({ ...form, foto_url: e.target.value })}
-          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
         />
         <input
           placeholder="URL foto wakil (opsional)"
           value={form.foto_url_wakil}
           onChange={(e) => setForm({ ...form, foto_url_wakil: e.target.value })}
-          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700"
         />
         <textarea
           placeholder="Visi (opsional)"
           value={form.visi}
           onChange={(e) => setForm({ ...form, visi: e.target.value })}
           rows={3}
-          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta md:col-span-2"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700 md:col-span-2"
         />
         <textarea
           placeholder="Misi (opsional)"
           value={form.misi}
           onChange={(e) => setForm({ ...form, misi: e.target.value })}
           rows={3}
-          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-fiesta-magenta md:col-span-2"
+          className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-ink-900 outline-none focus:border-azure-700 md:col-span-2"
         />
-        <button disabled={busy} className="md:col-span-2 rounded-xl bg-fiesta-magenta hover:bg-fiesta-purple text-white font-semibold px-5 py-3">
+        <button disabled={busy} className="md:col-span-2 rounded-xl bg-azure-700 hover:bg-azure-800 text-white font-semibold px-5 py-3">
           Simpan Paslon
         </button>
       </form>

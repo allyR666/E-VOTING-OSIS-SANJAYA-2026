@@ -21,13 +21,13 @@ export default function CallQueuePanel({ voters, settings, refresh }) {
     <div className="grid md:grid-cols-3 gap-6">
       <div className="md:col-span-2 rounded-2xl border border-gray-200 bg-white p-10 flex flex-col items-center justify-center text-center">
         <p className="text-ink-900/50 text-sm mb-3">Nomor Sedang Dipanggil</p>
-        <p className="font-display text-8xl text-fiesta-magenta mb-2">{current || '—'}</p>
+        <p className="font-display text-8xl text-azure-700 mb-2">{current || '—'}</p>
         {currentVoter && (
           <p className="text-ink-900/70">{currentVoter.nama} · Kelas {currentVoter.kelas}</p>
         )}
         <button
           onClick={callNext}
-          className="mt-8 rounded-2xl bg-fiesta-magenta hover:bg-fiesta-purple text-white font-semibold px-10 py-4 text-lg"
+          className="mt-8 rounded-2xl bg-azure-700 hover:bg-azure-800 text-white font-semibold px-10 py-4 text-lg"
         >
           Panggil Nomor Berikutnya →
         </button>
@@ -43,14 +43,14 @@ export default function CallQueuePanel({ voters, settings, refresh }) {
                 key={v.id}
                 onClick={() => callNumber(v.no_antrean)}
                 className={`w-full text-left px-4 py-2 rounded-xl text-sm flex justify-between ${
-                  v.no_antrean === current ? 'bg-fiesta-magenta/10 text-fiesta-magenta' : 'hover:bg-gray-50 text-ink-900/70'
+                  v.no_antrean === current ? 'bg-azure-700/10 text-azure-700' : 'hover:bg-gray-50 text-ink-900/70'
                 }`}
               >
                 <span>No. {v.no_antrean} — {v.nama}</span>
                 <span className="text-ink-900/30">{v.kelas}</span>
               </button>
             ))}
-          {!remaining.length && <p className="text-ink-900/35 text-sm">Semua pemilih sudah memilih 🎉</p>}
+          {!remaining.length && <p className="text-ink-900/35 text-sm">Semua pemilih sudah memilih.</p>}
         </div>
       </div>
     </div>

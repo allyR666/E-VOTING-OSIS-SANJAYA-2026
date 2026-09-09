@@ -35,13 +35,13 @@ export default function App() {
       <ElegantBackground />
 
       <div className="max-w-3xl text-center mb-14">
-        <p className="text-azure-700 font-bold tracking-wide text-sm mb-4">
+        <p className="text-white font-bold tracking-wide text-sm mb-4 drop-shadow">
           Pemilihan Resmi {settings?.organizer_name || 'OSIS'}
         </p>
-        <h1 className="font-display text-4xl md:text-6xl leading-tight text-ink-900">
+        <h1 className="font-display font-extrabold text-4xl md:text-6xl leading-tight text-white drop-shadow-lg">
           Satu suara, satu masa depan organisasi
         </h1>
-        <p className="mt-5 text-ink-900/60 max-w-xl mx-auto">
+        <p className="mt-5 text-white/85 max-w-xl mx-auto drop-shadow">
           Sistem pemilihan ketua dan wakil ketua OSIS secara digital, jujur, dan transparan —
           dipantau langsung dari layar ini hingga hasil akhir diumumkan.
         </p>

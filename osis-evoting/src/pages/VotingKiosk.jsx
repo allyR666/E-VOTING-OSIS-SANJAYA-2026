@@ -114,8 +114,8 @@ export default function VotingKiosk() {
         {step === STEPS.CHOOSE && (
           <div className="w-full max-w-5xl">
             <div className="text-center mb-10">
-              <p className="text-azure-700 font-bold text-sm mb-3 tracking-wide">Pilih satu pasangan calon</p>
-              <h1 className="font-display text-3xl text-ink-900">Ketua & Wakil Ketua OSIS</h1>
+              <p className="text-white font-bold text-sm mb-3 tracking-wide drop-shadow">Pilih satu pasangan calon</p>
+              <h1 className="font-display font-extrabold text-3xl text-white drop-shadow-lg">Ketua & Wakil Ketua OSIS</h1>
             </div>
             <div className={`grid gap-6 ${candidates.length > 2 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
               {candidates.map((c, i) => (

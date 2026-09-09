@@ -48,7 +48,7 @@ export default {
         card: '0 20px 45px -20px rgba(14,44,99,0.28)'
       },
       backgroundImage: {
-        elegant: 'linear-gradient(120deg, #EAF3FF 0%, #DCEBFF 30%, #C6DEFF 60%, #E9F2FF 100%)'
+        elegant: 'linear-gradient(135deg, #0E2C63 0%, #18449C 30%, #2E7DF5 65%, #5FA8F5 100%)'
       }
     }
   },
